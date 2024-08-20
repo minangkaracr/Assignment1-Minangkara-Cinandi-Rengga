@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" 
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-disabled="true">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-disabled="true">Inventory</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-6 mx-auto d-block col-md-2">
+                <img src="images/avatar-1.jpg" alt="avatar" class="w-100">
+            </div>
+            <div class="col-sm-8 col-md-4 d-flex align-items-center mb-3">
+                <div class="row">
+                    <h2><b id="myName">Minangkara Rengga</b></h2>
+                    <p id="myRole">Backend Developer</p>
+                    <div>
+                        <button type="button" class="btn btn-primary">Kontak</button>
+                        <button type="button" class="btn btn-outline-primary">Resume</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-6 d-flex align-items-center mb-3">
+                <div class="row">
+                    <div class="col">
+                        <section>
+                            <div class="col">
+                                <div class="row"><b>Availability</b></div>
+                                <div class="row"><b>Usia</b></div>
+                                <div class="row"><b>Lokasi</b></div>
+                                <div class="row"><b>Pengalaman</b></div>
+                                <div class="row"><b>Email</b></div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col">
+                        <section>
+                            <div class="col">
+                                <div class="row" id="myAvailability">Full time</div>
+                                <div class="row" id="myAge">25 Tahun</div>
+                                <div class="row" id="myLocation">Jakarta, Indonesia</div>
+                                <div class="row" id="myExperience">2 Tahun</div>
+                                <div class="row" id="myEmail">dev.rengga@gmail.com</div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding-bottom: 20px; margin-top: 10px">
+        <form action="">
+            <div class="form-group mb-3">
+                <label for="nama" id="name"><b>Nama</b></label>
+                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama">
+                
+            </div>
+            <div class="form-group mb-3">
+                <label for="role" ><b>Role</b></label>
+                <input type="text" class="form-control" id="role" placeholder="Masukkan Role">
+                
+            </div>
+            <div class="form-group mb-3">
+                <label for="availability" ><b>Availability</b></label>
+                <select id="availability" class="form-select">
+                    <option value="fulltime">Full Time</option>
+                    <option value="parttime">Part Time</option>
+                    <option value="internship">Internship</option>
+                </select>
+                <!-- <input type="text" class="form-control" id="availability" aria-describedby="name" placeholder="Availability"> -->
+            </div>
+            <div class="form-group mb-3">
+                <label for="age" ><b>Umur</b></label>
+                <input type="text" class="form-control" id="age" placeholder="Masukkan Umur">
+                
+            </div>
+            <div class="form-group mb-3">
+                <label for="lokasi" ><b>lokasi</b></label>
+                <input type="text" class="form-control" id="lokasi" placeholder="Masukkan Lokasi">
+                
+            </div>
+            <div class="form-group mb-3">
+                <label for="pengalaman" ><b>Pengalaman</b></label>
+                <input type="text" class="form-control" id="pengalaman" placeholder="Masukkan Tahun Pengalaman">
+                
+            </div>
+            <div class="form-group mb-3">
+                <label for="email" ><b>Email</b></label>
+                <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                
+            </div>
+            <div>
+                <button type="button" class="btn btn-success col-12" id="submitBtn">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+<footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script> 
+
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
+    <script>
+        /*var nama = "Rengga";
+        var role = "Backend Developer";
+        var age = 17;
+        var lokasi = "Jakarta";
+        var availability = "Full time";
+        var pengalaman = 2;
+        var email = "rengga@gmail.com";
+
+        console.log(nama, role, age, lokasi, availability, pengalaman, email)
+
+        var dataNama = document.getElementById("myName").innerHTML = nama;
+        var dataRole = document.getElementById("myRole").innerHTML = role;
+        var dataAge = document.getElementById("myAge").innerHTML = age;
+        var dataLocation = document.getElementById("myLocation").innerHTML = lokasi;
+        var dataAvailability = document.getElementById("myAvailability").innerHTML = availability;
+        var dataExperience = document.getElementById("myExperience").innerHTML = pengalaman;
+        var dataEmail = document.getElementById("myEmail").innerHTML = email;*/
+
+        $('#submitBtn').on('click', function() {
+            const nama = $('#nama').val();
+            const role = $('#role').val();
+            const availability = $('#availability').val();
+            const age = $('#age').val();
+            const lokasi = $('#lokasi').val();
+            const pengalaman = $('#pengalaman').val();
+            const email = $('#email').val();
+
+            if (nama == "" || role == "" || availability == "" || age == "" || lokasi == "" || pengalaman == "" || email == ""){
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Isi dulu yang bener",
+                    //footer: '<a href="#">Why do I have this issue?</a>'
+                  });
+                return true;
+            } else {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Data telah diganti!",
+                    icon: "success"
+                  });
+            }
+
+            $("#myName").html(nama)
+            $("#myRole").html(role)
+            $("#myAvailability").html(availability)
+            $("#myAge").html(age)
+            $("#myLocation").html(lokasi)
+            $("#myExperience").html(pengalaman)
+            $("#myEmail").html(email)
+        });
+
+        // Bisa pake JQuery juga
+        // $(document).ready(function(){konten, variabel, $("#id").html(value)})
+    </script>
+</footer>
+</html>
