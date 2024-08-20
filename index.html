@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Product</a>
@@ -115,7 +115,6 @@
             <div class="form-group mb-3">
                 <label for="age" ><b>Umur</b></label>
                 <input type="text" class="form-control" id="age" placeholder="Masukkan Umur">
-                
             </div>
             <div class="form-group mb-3">
                 <label for="lokasi" ><b>lokasi</b></label>
@@ -130,10 +129,10 @@
             <div class="form-group mb-3">
                 <label for="email" ><b>Email</b></label>
                 <input type="email" class="form-control" id="email" placeholder="Masukkan email">
-                
+                <small id="email-error" style="color: red; display: none;">Email tidak valid, mohon masukkan email yang benar</small>                
             </div>
             <div>
-                <button type="button" class="btn btn-success col-12" id="submitBtn">Submit</button>
+                <button type="button" class="btn btn-success col-12" id="submitBtn" disabled>Submit</button>
             </div>
         </form>
     </div>
@@ -167,12 +166,34 @@
         var dataAvailability = document.getElementById("myAvailability").innerHTML = availability;
         var dataExperience = document.getElementById("myExperience").innerHTML = pengalaman;
         var dataEmail = document.getElementById("myEmail").innerHTML = email;*/
+        const emailInput = document.getElementById('email');
+        const errorMessage = document.getElementById('email-error');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const submitBtn = document.getElementById('submitBtn');
+        const ageInput = document.getElementById('age');
+
+        emailInput.addEventListener('input', function() {
+            const email = emailInput.value;
+            if (!emailRegex.test(email)) {
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = true;
+            } else {
+                errorMessage.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+
+        ageInput.addEventListener('keypress', function(event) {
+            if (!/^\d$/.test(event.key)) {
+                event.preventDefault();
+            }
+        });
 
         $('#submitBtn').on('click', function() {
             const nama = $('#nama').val();
             const role = $('#role').val();
             const availability = $('#availability').val();
-            const age = $('#age').val();
+            const age = $('#age').val() + " Tahun";
             const lokasi = $('#lokasi').val();
             const pengalaman = $('#pengalaman').val();
             const email = $('#email').val();
@@ -181,7 +202,7 @@
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Isi dulu yang bener",
+                    text: "Mohon isi semua formnya",
                     //footer: '<a href="#">Why do I have this issue?</a>'
                   });
                 return true;
